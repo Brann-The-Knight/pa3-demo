@@ -1,3 +1,6 @@
+//should require the .dotenv file to access database
+require("dotenv").config();
+
 const express = require("express");
 
 const app = express();
