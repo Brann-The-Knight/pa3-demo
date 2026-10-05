@@ -26,12 +26,35 @@ db.getConnection()
 
 app.use(express.json());
 
-app.post("/api/sensor", (req, res) => {
-    console.log(req.body);
-    res.json({
-        message: "Sensor data received"
-    });
+
+app.post("/api/sensor", async (req, res) => {
+    try {
+        const { value, isCovered } = req.body;
+
+        await db.execute(
+            "INSERT INTO PhotoResistance (value, isCovered) VALUES (?, ?)",
+            [value, isCovered ? 1 : 0]
+        );
+
+        console.log("Sensor data saved:", value, isCovered);
+
+        res.json({
+            message: "Sensor data saved"
+        });
+    } catch (error) {
+        console.error("Database insert failed:", error);
+        res.status(500).json({
+            message: "Database error"
+        });
+    }
 });
+
+// app.post("/api/sensor", (req, res) => {
+//     console.log(req.body);
+//     res.json({
+//         message: "Sensor data received"
+//     });
+// });
 
 app.listen(3000, "0.0.0.0", () => {
     console.log("Server running on port 3000");
