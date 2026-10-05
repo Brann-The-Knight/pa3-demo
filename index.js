@@ -36,7 +36,7 @@ console.log("POST ROUTE WAS REACHED");
 
         await db.execute(
             "INSERT INTO PhotoResistance (value, `isCovered?`) VALUES (?, ?)",
-            [value, isCovered? ? 1 : 0]
+            [value, isCovered ? 1 : 0]
         );
 
         console.log("Sensor data received:", value, isCovered);
