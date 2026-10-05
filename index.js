@@ -36,13 +36,13 @@ app.post("/api/sensor", async (req, res) => {
             [value, isCovered ? 1 : 0]
         );
 
-        console.log("Sensor data saved:", value, isCovered);
+        console.log("Sensor data received:", value, isCovered);
 
         res.json({
-            message: "Sensor data saved"
+            message: "Sensor data has been saved"
         });
     } catch (error) {
-        console.error("Database insert failed:", error);
+        console.error("Database insert has failed:", error);
         res.status(500).json({
             message: "Database error"
         });
