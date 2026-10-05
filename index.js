@@ -32,7 +32,7 @@ app.post("/api/sensor", async (req, res) => {
         const { value, isCovered } = req.body;
 
         await db.execute(
-            "INSERT INTO PhotoResistance (value, isCovered) VALUES (?, ?)",
+            "INSERT INTO PhotoResistance (value, isCovered?) VALUES (?, ?)",
             [value, isCovered ? 1 : 0]
         );
 
