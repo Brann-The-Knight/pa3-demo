@@ -29,6 +29,8 @@ app.use(express.json());
 
 app.post("/api/sensor", async (req, res) => {
     try {
+console.log("POST ROUTE WAS REACHED");
+        
         const { value, isCovered } = req.body;
 
         await db.execute(
