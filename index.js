@@ -1,8 +1,13 @@
 //should require the .dotenv file to access database
-require("dotenv").config();
+// require("dotenv").config();
 
-const express = require("express");
-const mysql = require("mysql2/promise");
+// const express = require("express");
+// const mysql = require("mysql2/promise");
+
+import 'dotenv/config';
+
+import express from 'express';
+import mysql from 'mysql2/promise';
 
 const app = express();
 
