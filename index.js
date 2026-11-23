@@ -32,14 +32,15 @@ console.log("POST ROUTE WAS REACHED");
 
     try {
        
-        const { value, isCovered } = req.body;
+        const { usValue, inUse, lightValue, inRoom } = req.body;
 
         await db.execute(
-            "INSERT INTO PhotoResistance (value, `isCovered?`) VALUES (?, ?)",
-            [value, isCovered ? 1 : 0]
+            "INSERT INTO usage_sensor (usValue, inUse, lightValue, inRoom) VALUES (?, ?, ?, ?)",
+            [usValue, inUse, lightValue, inRoom]
         );
 
-        console.log("Sensor data received:", value, isCovered);
+        console.log("Sensor data received:", 
+            usValue, inUse, lightValue, inRoom);
 
         res.json({
             message: "Sensor data has been saved"
