@@ -30,9 +30,9 @@ const client = twilio(
 //We do we need an async & an away?
 //Waiting to get ready to send the message by letting the number
 //know to send the data and more out.
-async function sendTextMessage(to, message) {
+async function sendTextMessage() {
     //need to account for the latency to do the things
-    const message = await client.messages.create({
+    const result = await client.messages.create({
         //allows us to send the pre-built messages
         body: "sms_internal_alerts",
         from: process.env.TWILIO_PHONE_NUMBER,
