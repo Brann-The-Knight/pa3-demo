@@ -17,7 +17,7 @@ import twilio from 'twilio';
 
 
 //tells express what will be doing w/ JSON
-app.use(express.json());
+//app.use(express.json());
 //-------
 //Sends your data; works for your credentials
 //can be used for database credentials, keeping your database details safer
