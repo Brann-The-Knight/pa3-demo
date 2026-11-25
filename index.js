@@ -3,6 +3,7 @@
 
 // const express = require("express");
 // const mysql = require("mysql2/promise");
+import { sendTextMessage } from './twilio.js';
 
 import 'dotenv/config';
 
@@ -31,7 +32,7 @@ db.getConnection()
 
 app.use(express.json());
 
-
+//POST route for sending to the database.
 app.post("/api/sensor", async (req, res) => {
 console.log("POST ROUTE WAS REACHED");
 
@@ -54,6 +55,26 @@ console.log("POST ROUTE WAS REACHED");
         console.error("Database insert has failed:", error);
         res.status(500).json({
             message: "Database error"
+        });
+    }
+});
+
+//POST route for twilio
+app.post('/api/send-sms', async (req, res) => {
+    try {
+        await sendTextMessage();
+
+        return res.status(200).json({
+            success: true,
+            message: "SMS sent successfully."
+        });
+
+    } catch (error) {
+        console.error("SMS error:", error.message);
+
+        return res.status(500).json({
+            success: false,
+            message: "SMS sending failed."
         });
     }
 });
