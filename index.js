@@ -3,7 +3,7 @@
 
 // const express = require("express");
 // const mysql = require("mysql2/promise");
-import { sendTextMessage } from './twilio.js';
+import { sendTextMessage } from './app.js';
 
 import 'dotenv/config';
 
