@@ -48,6 +48,15 @@ console.log("POST ROUTE WAS REACHED");
 
         console.log("Sensor data received:", 
             usValue, inUse, lightValue, inRoom);
+        
+            if (Number(usValue) > 75) {
+            try {
+                await sendTextMessage();
+                console.log("SMS alert sent: ultrasonic value is too high.");
+            } catch (error) {
+                console.error("SMS alert failed:", error.message);
+            }
+            }
 
         res.json({
             message: "Sensor data has been saved"
